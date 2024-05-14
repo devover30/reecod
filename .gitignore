@@ -15,7 +15,7 @@
 local.properties
 app/release/*
 keys/*
-app_reources/*
+app_resources/
 app/debug/*
 app_folder_apk
 .idea/*

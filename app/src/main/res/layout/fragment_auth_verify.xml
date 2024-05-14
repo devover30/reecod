@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.Auth.AuthLoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/body_bg">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/loginEndProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:indicatorColor="@color/white"
+            app:trackColor="@android:color/white"
+            android:indeterminate="true"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--            style="@style/Widget.Material3.CardView.Outlined"-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/verifyTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:padding="8dp"
+                    android:text="@string/verify_heading"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="6dp"
+                    app:layout_constraintEnd_toEndOf="@id/verifyTextView"
+                    app:layout_constraintStart_toStartOf="@+id/verifyTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/verifyTextView">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextFirst"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextSecond"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="#757575"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextThird"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/element_bg"
+                        android:textColorHint="@color/element_bg"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextFourth"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textColorHint="#757575"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextFifth"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/element_bg"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/otpEditTextSixth"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/otp_bg"
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/element_bg"
+                        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/verify"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/element_bg"
+                    android:text="@string/action_verify"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    tools:ignore="VisualLintButtonSize" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

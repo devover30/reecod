@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/loginStartFragment">
+
+    <fragment
+        android:id="@+id/loginStartFragment"
+        android:name="info.devram.reecod.ui.Auth.AuthLoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_auth_start" >
+        <action
+            android:id="@+id/action_loginStartFragment_to_loginVerifyFragment"
+            app:destination="@id/loginVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginVerifyFragment"
+        android:name="info.devram.reecod.ui.Auth.AuthVerifyFragment"
+        android:label="Verify"
+        tools:layout="@layout/fragment_auth_verify" />
+</navigation>

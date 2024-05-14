@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!-- Below colors are to be used as note backgrounds   -->
+    <color name="pink_bg">#FD99FF</color>
+    <color name="brown_bg">#FF9E9E</color>
+    <color name="green_bg">#91F48F</color>
+    <color name="yellow_bg">#FFF599</color>
+    <color name="blue_bg">#9EFFFF</color>
+    <color name="purple_bg">#B69CFF</color>
+    <color name="delete_bg">#FF0000</color>
+<!-- Note background end   -->
+<!-- Body bg is the background to be used in dark mode in all activities   -->
+    <color name="body_bg">#252525</color>
+<!-- Element bg is the element background to be used in dark mode  -->
+    <color name="element_bg">#3B3B3B</color>
+<!-- Save Button Background   -->
+    <color name="save_btn_bg">#30BE71</color>
+    <color name="primary">#fff5f5f5</color>
+    <color name="primary_dark">#ff757575</color>
+    <color name="accent">#ff009688</color>
+</resources>

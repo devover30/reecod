@@ -22,7 +22,7 @@ import info.devram.reecod.databinding.FragmentAuthStartBinding;
 import info.devram.reecod.libs.Constants;
 import info.devram.reecod.libs.DataStoreHelper;
 import info.devram.reecod.libs.DataStoreSingleton;
-import info.devram.reecod.ui.MainActivity;
+import info.devram.reecod.ui.dashboard.DashboardActivity;
 
 
 public class AuthLoginFragment extends Fragment implements View.OnClickListener {
@@ -88,7 +88,7 @@ public class AuthLoginFragment extends Fragment implements View.OnClickListener 
                         dataStoreHelper.putStringValue(Constants.USER_DATA, userEntity);
                         Log.d(TAG, "subscribeObservers: " + dataStoreHelper.getStringValue(Constants.USER_DATA));
                         //sharedPreferences.edit().putString(Constants.USER_DETAILS, userEntity).apply();
-                        Intent intent = new Intent(requireActivity(), MainActivity.class);
+                        Intent intent = new Intent(requireActivity(), DashboardActivity.class);
 
                         startActivity(intent);
                         requireActivity().finish();

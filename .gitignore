@@ -19,3 +19,4 @@ app_resources/
 app/debug/*
 app_folder_apk
 .idea/*
+.aiexclude

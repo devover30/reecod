@@ -7,4 +7,5 @@
     <string name="action_sign_in">Sign in</string>
     <string name="verify_heading">Enter OTP received</string>
     <string name="action_verify">Verify</string>
+    <string name="add_note">Add Note</string>
 </resources>

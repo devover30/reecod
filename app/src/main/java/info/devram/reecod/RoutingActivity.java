@@ -24,7 +24,7 @@ import info.devram.reecod.libs.DataStoreSingleton;
 import info.devram.reecod.ui.Auth.AuthActivity;
 import info.devram.reecod.ui.Auth.AuthViewModel;
 import info.devram.reecod.ui.Auth.LoginViewModelFactory;
-import info.devram.reecod.ui.MainActivity;
+import info.devram.reecod.ui.dashboard.DashboardActivity;
 
 public class RoutingActivity extends BaseActivity {
 
@@ -128,7 +128,7 @@ public class RoutingActivity extends BaseActivity {
     }
 
     private void startDashboardActivity() {
-        Intent intent = new Intent(RoutingActivity.this, MainActivity.class);
+        Intent intent = new Intent(RoutingActivity.this, DashboardActivity.class);
         startActivity(intent);
         finish();
     }

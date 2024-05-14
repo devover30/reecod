@@ -8,4 +8,10 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <!--  Floating Action Button Style Start  -->
+    <style name="fab_rounded" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <!-- Floating action button end -->
 </resources>

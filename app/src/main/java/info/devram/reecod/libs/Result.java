@@ -14,7 +14,8 @@ public class Result<T> {
         LOGIN_SUCCESS,
         LOGIN_VERIFY_SUCCESS,
         TOKEN_VERIFY_SUCCESS,
-        NOTES_LIST_SUCCESS,
+        NOTES_GET_SUCCESS,
+        NOTES_TAGS_GET_SUCCESS,
         ERROR
     }
 
@@ -49,7 +50,11 @@ public class Result<T> {
     }
 
     public static <T> Result<T> notesListFetchSuccess(T data) {
-        return new Result<>(Status.NOTES_LIST_SUCCESS, data, null);
+        return new Result<>(Status.NOTES_GET_SUCCESS, data, null);
+    }
+
+    public static <T> Result<T> notesTagsFetchSuccess(T data) {
+        return new Result<>(Status.NOTES_TAGS_GET_SUCCESS, data, null);
     }
 
     @NonNull

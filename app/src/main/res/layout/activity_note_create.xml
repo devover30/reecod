@@ -36,6 +36,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/noteHeadingEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_rounded"
+        android:drawablePadding="10dp"
+        android:hint="@string/heading"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/noteDescEditText"
@@ -55,7 +72,47 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/noteHeadingEditText" />
+
+    <RelativeLayout
+        android:id="@+id/notesTagsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_rounded"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteDescEditText">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:contentDescription="@string/tags_icon"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/view_list" />
+
+        <Spinner
+            android:id="@+id/notesTagsSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:overlapAnchor="false"
+            android:popupBackground="@color/white"
+            android:spinnerMode="dropdown" />
+
+    </RelativeLayout>
 
 
     <com.google.android.material.button.MaterialButton
@@ -63,14 +120,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/save_btn_bg"
         android:text="@string/submit"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteDescEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/notesTagsLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

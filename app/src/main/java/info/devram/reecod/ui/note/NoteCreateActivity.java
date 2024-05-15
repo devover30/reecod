@@ -2,10 +2,15 @@ package info.devram.reecod.ui.note;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -17,10 +22,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import info.devram.reecod.BaseActivity;
 import info.devram.reecod.R;
+import info.devram.reecod.data.model.NoteTagEntity;
 import info.devram.reecod.data.model.UserEntity;
 import info.devram.reecod.databinding.ActivityNoteCreateBinding;
 import info.devram.reecod.libs.Constants;
@@ -30,31 +38,29 @@ import info.devram.reecod.ui.dashboard.DashboardActivity;
 import info.devram.reecod.ui.dashboard.DashboardViewModel;
 import info.devram.reecod.ui.dashboard.DashboardViewModelFactory;
 
-public class NoteCreateActivity extends BaseActivity implements View.OnClickListener {
+public class NoteCreateActivity extends BaseActivity implements
+        View.OnClickListener,
+        AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "NoteCreateActivity";
     private DashboardViewModel viewModel;
-
+    private NoteCreateViewModel noteCreateViewModel;
     private DataStoreHelper dataStoreHelper;
     private ActivityNoteCreateBinding binding;
     private String authToken = null;
+    private String tag = null;
+    private List<String> spinnerList;
+    private List<NoteTagEntity> notesTagsList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_note_create);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         binding = ActivityNoteCreateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         viewModel = new ViewModelProvider(this, new DashboardViewModelFactory())
                 .get(DashboardViewModel.class);
-//        entryCreateViewModel = new ViewModelProvider(this, new EntryCreateViewModelFactory())
-//                .get(EntryCreateViewModel.class);
+        noteCreateViewModel = new ViewModelProvider(this, new NoteCreateViewModelFactory())
+                .get(NoteCreateViewModel.class);
         DataStoreSingleton dataStoreSingleton = DataStoreSingleton.getInstance();
         RxDataStore<Preferences> dataStoreRX;
         if (dataStoreSingleton.getDataStore() == null) {
@@ -97,13 +103,36 @@ public class NoteCreateActivity extends BaseActivity implements View.OnClickList
             UserEntity user = gson.fromJson(userEntity, UserEntity.class);
             viewModel.setAuthTokenLiveData(user.getToken());
         }
+
         viewModel.authTokenObserver().observe(this, token -> {
             if (token != null) {
                 authToken = token;
-                //entryCreateViewModel.acquireEntryTypes(authToken);
+                noteCreateViewModel.fetchNotesTags(authToken);
             }
         });
 
+        noteCreateViewModel.notesTagsResult().observe(this, notesTagsResult -> {
+            switch (notesTagsResult.getStatus()) {
+                case ERROR -> Log.d(TAG, "subscribeObservers: " + notesTagsResult.getException());
+                case NOTES_TAGS_GET_SUCCESS -> {
+                    if (notesTagsResult.getData() != null) {
+                        notesTagsList = notesTagsResult.getData();
+                        spinnerList = new ArrayList<>();
+                        spinnerList.add("Tag");
+                        for (NoteTagEntity tag: notesTagsList) {
+                            spinnerList.add(tag.getTag());
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                                this,
+                                android.R.layout.simple_spinner_dropdown_item,
+                                spinnerList
+                        );
+                        adapter.setDropDownViewResource(R.layout.create_spinner_list);
+                        binding.notesTagsSpinner.setAdapter(adapter);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -111,5 +140,21 @@ public class NoteCreateActivity extends BaseActivity implements View.OnClickList
         if (v.getId() == binding.noteSaveButton.getId()) {
             binding.noteSaveProgressBar.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView textView = (TextView) parent.getChildAt(0);
+        if (textView != null) {
+            textView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+        }
+        if (!Objects.equals(spinnerList.get(position), "Category")) {
+            tag = spinnerList.get(position);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

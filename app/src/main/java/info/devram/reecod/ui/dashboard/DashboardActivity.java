@@ -85,7 +85,7 @@ public class DashboardActivity extends BaseActivity {
         viewModel.notesResult().observe(this, resultData -> {
             switch (resultData.getStatus()) {
                 case ERROR -> Log.d(TAG, "subscribeObservers: " + resultData.getException());
-                case NOTES_LIST_SUCCESS -> {
+                case NOTES_GET_SUCCESS -> {
                     LinearLayoutManager layout = new LinearLayoutManager(this);
                     DashboardAdapter adapter = new DashboardAdapter(resultData.getData());
                     binding.dashboardRV.setLayoutManager(layout);

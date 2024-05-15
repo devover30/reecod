@@ -6,17 +6,17 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import info.devram.reecod.data.DashboardService;
+import info.devram.reecod.data.NotesDataService;
 import info.devram.reecod.data.model.NoteEntity;
 import info.devram.reecod.libs.Result;
 
 public class DashboardViewModel extends ViewModel {
 
-    private final DashboardService service;
+    private final NotesDataService service;
     private final MutableLiveData<String> authTokenLiveData = new MutableLiveData<>();
     private final MutableLiveData<Result<List<NoteEntity>>> notesResult = new MutableLiveData<>();
 
-    public DashboardViewModel(DashboardService service) {
+    public DashboardViewModel(NotesDataService service) {
         this.service = service;
     }
 

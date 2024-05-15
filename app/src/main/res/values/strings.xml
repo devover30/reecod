@@ -8,4 +8,6 @@
     <string name="verify_heading">Enter OTP received</string>
     <string name="action_verify">Verify</string>
     <string name="add_note">Add Note</string>
+    <string name="entry_description">Description</string>
+    <string name="submit">Submit</string>
 </resources>

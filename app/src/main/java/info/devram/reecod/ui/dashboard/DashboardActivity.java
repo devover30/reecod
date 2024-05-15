@@ -1,12 +1,9 @@
 package info.devram.reecod.ui.dashboard;
 
-import android.content.res.TypedArray;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.activity.EdgeToEdge;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -14,13 +11,9 @@ import androidx.datastore.preferences.core.Preferences;
 import androidx.datastore.preferences.rxjava2.RxPreferenceDataStoreBuilder;
 import androidx.datastore.rxjava2.RxDataStore;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.google.gson.Gson;
-
 import java.util.Objects;
-
 import info.devram.reecod.BaseActivity;
 import info.devram.reecod.R;
 import info.devram.reecod.adapters.DashboardAdapter;
@@ -29,11 +22,11 @@ import info.devram.reecod.databinding.ActivityDashboardBinding;
 import info.devram.reecod.libs.Constants;
 import info.devram.reecod.libs.DataStoreHelper;
 import info.devram.reecod.libs.DataStoreSingleton;
+import info.devram.reecod.ui.note.NoteCreateActivity;
 
 public class DashboardActivity extends BaseActivity {
     private static final String TAG = "DashboardActivity";
 
-    private NavController navController;
     private ActivityDashboardBinding binding;
     private DashboardViewModel viewModel;
     private DataStoreHelper dataStoreHelper;
@@ -63,9 +56,9 @@ public class DashboardActivity extends BaseActivity {
         dataStoreHelper = new DataStoreHelper(dataStoreRX);
         Thread.setDefaultUncaughtExceptionHandler(handleAppCrash);
         binding.floatingActionButton.setOnClickListener(view -> {
-//            Intent intent = new Intent(DashboardActivity.this, EntryCreateActivity.class);
-//            startActivity(intent);
-//            finish();
+            Intent intent = new Intent(DashboardActivity.this, NoteCreateActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
@@ -78,7 +71,6 @@ public class DashboardActivity extends BaseActivity {
 
     private void subscribeObservers() {
         String userEntity = dataStoreHelper.getStringValue(Constants.USER_DATA);
-        Log.d(TAG, "subscribeObservers: " + userEntity);
         if (!Objects.equals(userEntity, "null")) {
             Gson gson = new Gson();
             UserEntity user = gson.fromJson(userEntity, UserEntity.class);
@@ -91,11 +83,8 @@ public class DashboardActivity extends BaseActivity {
         });
 
         viewModel.notesResult().observe(this, resultData -> {
-
             switch (resultData.getStatus()) {
-                case ERROR -> {
-                    Log.d(TAG, "subscribeObservers: " + resultData.getException());
-                }
+                case ERROR -> Log.d(TAG, "subscribeObservers: " + resultData.getException());
                 case NOTES_LIST_SUCCESS -> {
                     LinearLayoutManager layout = new LinearLayoutManager(this);
                     DashboardAdapter adapter = new DashboardAdapter(resultData.getData());

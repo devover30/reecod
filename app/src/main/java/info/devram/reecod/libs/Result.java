@@ -14,10 +14,7 @@ public class Result<T> {
         LOGIN_SUCCESS,
         LOGIN_VERIFY_SUCCESS,
         TOKEN_VERIFY_SUCCESS,
-        SUMMARY_SUCCESS,
-        ENTRIES_PAGE_SUCCESS,
-        ENTRY_SAVE_SUCCESS,
-        ENTRY_TYPE_SUCCESS,
+        NOTES_LIST_SUCCESS,
         ERROR
     }
 
@@ -51,28 +48,21 @@ public class Result<T> {
         return new Result<>(Status.TOKEN_VERIFY_SUCCESS, data, null);
     }
 
-    public static <T> Result<T> getSummarySuccess(T data) {
-        return new Result<>(Status.SUMMARY_SUCCESS, data, null);
+    public static <T> Result<T> notesListFetchSuccess(T data) {
+        return new Result<>(Status.NOTES_LIST_SUCCESS, data, null);
     }
 
-    public static <T> Result<T> getEntriesByPage(T data) {
-        return new Result<>(Status.ENTRIES_PAGE_SUCCESS, data, null);
-    }
-    public static <T> Result<T> getEntryTypes(T data) {
-        return new Result<>(Status.ENTRY_TYPE_SUCCESS, data, null);
-    }
-    public static <T> Result<T> entrySave(T data) {
-        return new Result<>(Status.ENTRY_SAVE_SUCCESS, data, null);
-    }
-
+    @NonNull
     public Status getStatus() {
         return status;
     }
 
+    @Nullable
     public T getData() {
         return this.data;
     }
 
+    @Nullable
     public AppException getException() {
         return this.exception;
     }

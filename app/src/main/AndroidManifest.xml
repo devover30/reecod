@@ -14,9 +14,11 @@
         android:theme="@style/Theme.Reecod"
         tools:targetApi="31">
         <activity
+            android:name=".ui.note.NoteCreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.dashboard.DashboardActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".RoutingActivity"
             android:exported="true"

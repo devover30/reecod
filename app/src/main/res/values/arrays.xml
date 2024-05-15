@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="note_bg_colors">
+    <string-array name="note_bg_colors">
         <item>@color/pink_bg</item>
         <item>@color/brown_bg</item>
         <item>@color/green_bg</item>
         <item>@color/yellow_bg</item>
         <item>@color/blue_bg</item>
         <item>@color/purple_bg</item>
-    </array>
+    </string-array>
 </resources>

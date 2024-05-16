@@ -16,6 +16,7 @@ public class Result<T> {
         TOKEN_VERIFY_SUCCESS,
         NOTES_GET_SUCCESS,
         NOTES_TAGS_GET_SUCCESS,
+        NOTE_CREATE_SUCCESS,
         ERROR
     }
 
@@ -55,6 +56,10 @@ public class Result<T> {
 
     public static <T> Result<T> notesTagsFetchSuccess(T data) {
         return new Result<>(Status.NOTES_TAGS_GET_SUCCESS, data, null);
+    }
+
+    public static <T> Result<T> noteCreateSuccess(T data) {
+        return new Result<>(Status.NOTE_CREATE_SUCCESS, data, null);
     }
 
     @NonNull

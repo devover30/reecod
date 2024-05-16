@@ -3,9 +3,7 @@ package info.devram.reecod.ui.dashboard;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import java.util.List;
-
 import info.devram.reecod.data.NotesDataService;
 import info.devram.reecod.data.model.NoteEntity;
 import info.devram.reecod.libs.Result;

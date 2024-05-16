@@ -3,7 +3,6 @@ package info.devram.reecod.ui.dashboard;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-
 import info.devram.reecod.data.NotesDataSource;
 import info.devram.reecod.data.NotesDataService;
 

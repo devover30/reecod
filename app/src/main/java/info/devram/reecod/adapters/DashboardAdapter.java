@@ -4,13 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import info.devram.reecod.R;
 import info.devram.reecod.data.model.NoteEntity;
 import info.devram.reecod.databinding.DashboardRowItemBinding;
